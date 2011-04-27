@@ -1,0 +1,172 @@
+<%= form_for @auto, :html => { :multipart => true } do |f| %>
+  <%= f.error_messages %>
+	<div class="" style="width: 335px; float: left; padding:0 10px">
+		<p class="left">
+		<%= f.label :id %><br />
+		<%= f.text_field :id,  'size' => 2 %>
+		</p>
+		<p class="left hersteller">
+	    <%= f.label :hersteller  %><br />
+	    <%= f.text_field :hersteller %>
+	  </p>
+	  <p class="modell">
+	    <%= f.label :modell %><br />
+	    <%= f.text_field :modell %>
+	  </p>
+	 <p class="firstcolumn left">
+	    <%= f.label :land %><br />
+	    <%= f.text_field :land %>
+	  </p>
+	  <p class="secondcolumn left">
+	    <%= f.label :baujahr %><br />
+	    <%= f.text_field :baujahr %>
+	  </p>
+		<br style="clear: both;">
+	  <p class="typ">
+	    <%= f.label :typ %><br />
+	    <%= f.text_field :typ %>
+	  </p>
+	 <p class="firstcolumn left">
+	    <%= f.label :status %><br />
+	    <%= f.text_field :status %>
+	  </p>
+	  <p class="secondcolumn left">
+	    <%= f.label :farbe %><br />
+	    <%= f.text_field :farbe %>
+	  </p>
+	  <p class="firstcolumn left">
+	    <%= f.label :konstruktion %><br />
+	    <%= f.text_area :konstruktion %>
+	  </p>
+	 <p class="secondcolumn left">
+	    <%= f.label :antrieb %><br />
+	    <%= f.text_area :antrieb %>
+	  </p>
+	  <p class="firstcolumn left">
+	    <%= f.label :raeder %><br />
+	    <%= f.text_area :raeder %>
+	  </p>
+	  <p class="secondcolumn left">
+	    <%= f.label :ausstattung %><br />
+	    <%= f.text_area :ausstattung %>
+	  </p>
+	<p class="firstofthreecolumns left">
+	    <%= f.label :description, "ABMeSSuNgeN LxBxH" %><br />
+	    <%= f.text_field :abmessungl, 'size' => 2 %>
+	    <%= f.text_field :abmessungb, 'size' => 2 %>
+	    <%= f.text_field :abmessungh, 'size' => 2  %>
+	  </p>
+	  <p class="secondcolumn left">
+	    <%= f.label :gewichtinkg %><br />
+	    <%= f.text_field :gewichtinkg %>
+	  </p>
+	  <p class="firstcolumn left">
+	    <%= f.label :relevanz %><br />
+	    <%= f.text_field :relevanz %>
+	  </p>
+	  <p class="secondcolumn left">
+	    <%= f.label :geschaetztermarktwert %><br />
+	    <%= f.text_field :geschaetztermarktwert %>
+	  </p>
+	  <p class="sonstiges">
+	    <%= f.label :sonstiges %><br />
+	    <%= f.text_area :sonstiges %>
+	  </p>
+	</div>
+	<div style="width: 230px; float: left; padding:0 10px;">
+		<%= f.fields_for :assets do |asset_fields| %>
+			<% if asset_fields.object.new_record? %>
+				<p>
+					<%= asset_fields.file_field :asset %>
+				</p>
+			<% end %>
+		<% end %>
+
+		<% f.fields_for :assets do |asset_fields| %>
+			<% unless asset_fields.object.new_record? %>
+				<p>
+					<%= link_to image_tag(asset_fields.object.asset.url(:thumb)), asset_fields.object.asset.url(:original) %>
+					<%= asset_fields.check_box :_destroy %> delete
+				</p>
+			<% end %>
+		<% end %>
+	</div>
+	<div style="width: 335px; float: left; background: #ccc; padding:0 10px">
+ 
+  <p>
+    <%= f.label :datenbanknralt %><br />
+    <%= f.text_field :datenbanknralt %>
+  </p>
+  <p >
+    <%= f.label :kaufdatum %><br />
+    <%= f.date_select :kaufdatum %>
+  </p>  
+  <p>
+    <%= f.label :verkaeufer %><br />
+    <%= f.text_field :verkaeufer %>
+  </p>  
+  <p class="firstcolumn left">
+    <%= f.label :ebaybenutzername %><br />
+    <%= f.text_field :ebaybenutzername %>
+  </p>  
+  <p class="secondcolumn left">
+    <%= f.label :ebayartikelnummer %><br />
+    <%= f.text_field :ebayartikelnummer %>
+  </p>
+  <p class="typ">
+    <%= f.label :modellbeschreibung %><br />
+    <%= f.text_field :modellbeschreibung %>
+  </p>
+  <p class="firstcolumn left">
+    <%= f.label :farbekauf %><br />
+    <%= f.text_field :farbekauf %>
+  </p>
+  <p class="secondcolumn left">
+    <%= f.label :anmerkungnachkauf %><br />
+    <%= f.text_field :anmerkungnachkauf %>
+  </p>  
+  <p class="firstcolumn left">
+    <%= f.label :zahlungsart %><br />
+    <%= f.text_field :zahlungsart %>
+  </p>
+  <p class="secondcolumn left">
+    <%= f.label :zahlungsdatum %><br />
+    <%= f.text_field :zahlungsdatum %>
+  </p>  
+
+
+
+
+
+
+  <p>
+    <%= f.label :waehrung %><br />
+    <%= f.text_field :waehrung %>
+  </p>
+  <p>
+    <%= f.label :kaufpreis %><br />
+    <%= f.text_field :kaufpreis %>
+  </p>
+  <p>
+    <%= f.label :transport %><br />
+    <%= f.text_field :transport %>
+  </p>
+  <p>
+    <%= f.label :summe %><br />
+    <%= f.text_field :summe %>
+  </p>
+  <p>
+    <%= f.label :ersatzteile %><br />
+    <%= f.text_field :ersatzteile %>
+  </p>
+  <p>
+    <%= f.label :restaurier %><br />
+    <%= f.text_field :restaurier %>
+  </p>
+  <p>
+    <%= f.label :gesamt %><br />
+    <%= f.text_field :gesamt %>
+  </p>
+</div>
+  <p style="clear: both;"><%= f.submit %></p>
+<% end %>
